@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Treadmill
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,25 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 667359269
+    locked: 0
+  - name: Furniture
+    uniqueID: 2030672473
+    locked: 0
+  - name: SelectedFurniture
+    uniqueID: 74820581
+    locked: 0
+  - name: BackItem
+    uniqueID: 2823420821
+    locked: 0
+  - name: Player
+    uniqueID: 2500668273
+    locked: 0
+  - name: TreadmillBorders
+    uniqueID: 2472687305
+    locked: 0
+  - name: FrontItem
+    uniqueID: 465545771
     locked: 0
