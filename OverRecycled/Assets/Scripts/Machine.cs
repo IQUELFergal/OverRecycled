@@ -26,15 +26,15 @@ public class Machine : MonoBehaviour
     void Update()
     {
         
-        if (isFull())
+        if (IsFull())
         {
-            timeLeft -= Time.deltaTime;
-            if (timeLeft <= 0) Debug.Log(timeLeft);//Transform(recipes[0]); 
-            
+            //timeLeft -= Time.deltaTime;
+            //if (timeLeft <= 0) Debug.Log(timeLeft);//Transform(recipes[0]);
+            Transform(recipes[0]);
         }
         else
         {
-            timeLeft = recipes[0].craftingTime;
+            //timeLeft = recipes[0].craftingTime;
         }
     }
 
@@ -44,18 +44,58 @@ public class Machine : MonoBehaviour
         {
             table.item = null;
         }
-        Item result = r.output;
-        tables[0].item = emptyItem;
-        tables[0].item.item = result;
-        Debug.Log("Crafted " + result.name);
+        Item result = GetResult();
+        if (result==null)
+        {
+            tables[0].item = emptyItem;
+            tables[0].item.item = result;
+            Debug.Log("Crafted " + result.name);
+        }
     }
 
-    bool isFull()
+    bool IsFull()
     {
         foreach (Table table in tables)
         {
             if (!table.item) return false;
         }
         return true;
+    }
+
+    Item GetResult()
+    {
+        Item result = null; //= Resources.Load junkItem; Trouver la bonne fonction
+        foreach (Recipe recipe in recipes)
+        {
+            switch (tables.Length)
+            {
+                default:
+                    break;
+                case 1:
+                    if (tables[0].item == recipe.inputs[0])
+                    {
+                        result = recipe.output;
+                    }
+                    break;
+                case 2:
+                    if ((tables[0].item == recipe.inputs[0] && tables[1].item == recipe.inputs[1]) ||
+                        (tables[1].item == recipe.inputs[0] && tables[0].item == recipe.inputs[1]))
+                    {
+                        result = recipe.output;
+                    }
+                    break;
+                case 3:
+                    if ((tables[0].item == recipe.inputs[0] && tables[1].item == recipe.inputs[1] && tables[2].item == recipe.inputs[2]) ||
+                        (tables[0].item == recipe.inputs[0] && tables[1].item == recipe.inputs[2] && tables[2].item == recipe.inputs[1]) ||
+                        (tables[0].item == recipe.inputs[2] && tables[1].item == recipe.inputs[1] && tables[2].item == recipe.inputs[0]) ||
+                        (tables[0].item == recipe.inputs[1] && tables[0].item == recipe.inputs[1] && tables[2].item == recipe.inputs[2]))
+                    {
+                        result = recipe.output;
+                    }
+                    break;
+            }
+
+        }
+        return result;
     }
 }
