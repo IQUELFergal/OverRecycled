@@ -15,7 +15,10 @@ public class Table : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = sprite;
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingOrder = -(int)transform.position.y;
+
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         if(item && item.HasItem()) itemOverlay.sprite = item.GetItemSprite();
     }
