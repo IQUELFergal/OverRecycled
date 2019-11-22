@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class RecipeDisplayer : MonoBehaviour
 {
     int i = 0;
-    float timerInSeconds = 15f;
-    float gravityValue = 200f;
+    float gravityValue = 800f;
     float xPosition = -860f, yPosition = -450f;
+    float timerInSeconds = 45f;
+    float delayBetweenRecipe = 15f;
 
     public Sprite firstImage;
 
@@ -21,7 +22,7 @@ public class RecipeDisplayer : MonoBehaviour
     {
         PlayerPrefs.SetInt("RecipeNumber", 0);
 
-        InvokeRepeating("Create", 0f, 5f);
+        InvokeRepeating("Create", 0f, delayBetweenRecipe);
 
         Physics2D.gravity = new Vector2(0, gravityValue);  
     } 
