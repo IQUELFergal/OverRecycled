@@ -7,12 +7,17 @@ public class RecipeDisplayer : MonoBehaviour
 {
     int i = 0;
 
+    float timerInSeconds = 15f;
+
     public Sprite firstImage;
 
     Image myImageComponent;
 
     Rigidbody2D constraint;
     BoxCollider2D colliderScaler;
+
+    GameObject[] currentDisplayedRecipe;
+    GameObject recipe;
 
     void Start()
     {
@@ -22,20 +27,18 @@ public class RecipeDisplayer : MonoBehaviour
 
         Physics2D.gravity = new Vector2(0, 200f);  
     } 
-
+    
     // Update is called once per frame
-    void Update()
+/*    void Update()
     {
         if (PlayerPrefs.GetInt("RecipeNumber", 0) >= 3)
-        {
-            CancelInvoke();
+        {            
+            //CancelInvoke();
+            recipe = GameObject.Find(i.ToString());
+            Destroy(recipe, timerInSeconds);
+            i++;
         }
-        if (PlayerPrefs.GetInt("RecipeNumber", 0) != 0)
-        {
-            
-
-        }
-    }
+    }*/
 
     void Create()
     {
@@ -73,6 +76,9 @@ public class RecipeDisplayer : MonoBehaviour
         //newObject.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         newObject.transform.position = new Vector2(50f, 150f);
         newObject.transform.localScale = new Vector2(1.5f, 1.5f);
+
+        //Destroy the Image GameObject in timerInSeconds seconds
+        Destroy(newObject, timerInSeconds);
     }
 
     //Creates Hidden GameObject and attaches Canvas component to it
