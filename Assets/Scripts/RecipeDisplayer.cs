@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class RecipeDisplayer : MonoBehaviour
 {
     int i = 0;
-
     float timerInSeconds = 15f;
+    float gravityValue = 200f;
+    float xPosition = -860f, yPosition = -450f;
 
     public Sprite firstImage;
 
@@ -16,29 +17,14 @@ public class RecipeDisplayer : MonoBehaviour
     Rigidbody2D constraint;
     BoxCollider2D colliderScaler;
 
-    GameObject[] currentDisplayedRecipe;
-    GameObject recipe;
-
     void Start()
     {
         PlayerPrefs.SetInt("RecipeNumber", 0);
 
         InvokeRepeating("Create", 0f, 5f);
 
-        Physics2D.gravity = new Vector2(0, 200f);  
+        Physics2D.gravity = new Vector2(0, gravityValue);  
     } 
-    
-    // Update is called once per frame
-/*    void Update()
-    {
-        if (PlayerPrefs.GetInt("RecipeNumber", 0) >= 3)
-        {            
-            //CancelInvoke();
-            recipe = GameObject.Find(i.ToString());
-            Destroy(recipe, timerInSeconds);
-            i++;
-        }
-    }*/
 
     void Create()
     {
@@ -50,35 +36,34 @@ public class RecipeDisplayer : MonoBehaviour
         GameObject canvas = CreateCanvas(false);
 
         //Create your Image GameObject
-        GameObject newObject = new GameObject(i.ToString());
+        GameObject newRecipe = new GameObject(i.ToString());
 
         //Add a Rigidbody2D to the Image Gameobject and freeze the rotation
-        newObject.AddComponent<Rigidbody2D>();
-        constraint = newObject.GetComponent<Rigidbody2D>();
+        newRecipe.AddComponent<Rigidbody2D>();
+        constraint = newRecipe.GetComponent<Rigidbody2D>();
         constraint.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         //Add a BoxCollider2D to the Image Gameobject and scale it
-        newObject.AddComponent<BoxCollider2D>();
-        colliderScaler = newObject.GetComponent<BoxCollider2D>();
+        newRecipe.AddComponent<BoxCollider2D>();
+        colliderScaler = newRecipe.GetComponent<BoxCollider2D>();
         colliderScaler.size = new Vector2(100f, 100f);
 
         //Make the GameObject child of the Canvas
-        newObject.transform.SetParent(canvas.transform);
+        newRecipe.transform.SetParent(canvas.transform);
 
         //Add Image Component to it(This will add RectTransform as-well)
-        newObject.AddComponent<Image>();
+        newRecipe.AddComponent<Image>();
 
         //Add a sprite to the Image
-        myImageComponent = newObject.GetComponent<Image>();
+        myImageComponent = newRecipe.GetComponent<Image>();
         myImageComponent.sprite = firstImage;
 
-        //Set the position of the Image
-        //newObject.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-        newObject.transform.position = new Vector2(50f, 150f);
-        newObject.transform.localScale = new Vector2(1.5f, 1.5f);
+        //Set the position and the scale of the Image
+        newRecipe.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, yPosition);
+        newRecipe.transform.localScale = new Vector2(1.5f, 1.5f);
 
         //Destroy the Image GameObject in timerInSeconds seconds
-        Destroy(newObject, timerInSeconds);
+        Destroy(newRecipe, timerInSeconds);
     }
 
     //Creates Hidden GameObject and attaches Canvas component to it
