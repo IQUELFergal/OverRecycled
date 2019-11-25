@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class RecipeDisplayer : MonoBehaviour
 {
     int i = 0;
+    int prevScore = -1;
+    int numberMaxOfRecipe = 3;
+
     float gravityValue = 800f;
     float xPosition = -860f, yPosition = -450f;
-    float timerInSeconds = 45f;
-    float delayBetweenRecipe = 15f;
+    float delayBetweenRecipe = 5f;
+
+    bool orderIsCompleted = false;
 
     public Sprite firstImage;
 
@@ -18,26 +22,69 @@ public class RecipeDisplayer : MonoBehaviour
     Rigidbody2D constraint;
     BoxCollider2D colliderScaler;
 
+    List<GameObject> currentRecipe = new List<GameObject>();
+    
     void Start()
     {
         PlayerPrefs.SetInt("RecipeNumber", 0);
 
-        InvokeRepeating("Create", 0f, delayBetweenRecipe);
+        InvokeRepeating("Update5Seconds", 0f, delayBetweenRecipe);
 
         Physics2D.gravity = new Vector2(0, gravityValue);  
-    } 
+    }
 
-    void Create()
+    void Update()
+    {
+        int currentScore = PlayerPrefs.GetInt("CurrentScore1", 0);
+
+        if (orderIsCompleted == true || currentScore % 5 == 0)
+        {
+            if (currentScore != this.prevScore)
+            {
+                // Suppression de la recette actuelle et création d'une nouvelle            
+                this.DestroyRecipe(0);
+                prevScore = currentScore;
+            }           
+        }
+    }
+
+    void Update5Seconds()
+    {       
+        if (PlayerPrefs.GetInt("RecipeNumber", 0) < numberMaxOfRecipe)
+        {
+            Debug.Log(PlayerPrefs.GetInt("RecipeNumber", 0));
+            Create();
+        }
+        else if (PlayerPrefs.GetInt("RecipeNumber", 0) >= numberMaxOfRecipe)
+        {
+            this.DestroyRecipe(0);
+        }
+    }
+
+    void DestroyRecipe(int i, bool createNewRecipe = true)
+    {
+        Destroy(currentRecipe[i]);
+        currentRecipe.RemoveAt(i);
+        this.i--;
+        PlayerPrefs.SetInt("RecipeNumber", this.i);
+        if (createNewRecipe)
+        {
+            Create();
+        }
+    }
+
+    void Create() 
     {
         //Number of recipe
-        i++;
-        PlayerPrefs.SetInt("RecipeNumber", i);
+        this.i++;
+        PlayerPrefs.SetInt("RecipeNumber", this.i);
 
         //Create Canvas
         GameObject canvas = CreateCanvas(false);
 
-        //Create your Image GameObject
-        GameObject newRecipe = new GameObject(i.ToString());
+        //Create your Image GameObject and add it to the list of the current recipe
+        GameObject newRecipe = new GameObject(this.i.ToString());
+        currentRecipe.Add(newRecipe);
 
         //Add a Rigidbody2D to the Image Gameobject and freeze the rotation
         newRecipe.AddComponent<Rigidbody2D>();
@@ -62,9 +109,6 @@ public class RecipeDisplayer : MonoBehaviour
         //Set the position and the scale of the Image
         newRecipe.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, yPosition);
         newRecipe.transform.localScale = new Vector2(1.5f, 1.5f);
-
-        //Destroy the Image GameObject in timerInSeconds seconds
-        Destroy(newRecipe, timerInSeconds);
     }
 
     //Creates Hidden GameObject and attaches Canvas component to it
