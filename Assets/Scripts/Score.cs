@@ -12,7 +12,7 @@ public class Score : MonoBehaviour
     public Text highScore1;
     public Text highScore2;
 
-    int number1 = 1;
+    int number1 = 0;
     //int number2 = 0;
 
     void Start()

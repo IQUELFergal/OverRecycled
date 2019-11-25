@@ -10,19 +10,18 @@ public class RecipeDisplayer : MonoBehaviour
     int numberMaxOfRecipe = 3;
 
     float gravityValue = 800f;
-    float xPosition = -860f, yPosition = -450f;
+    float xPositionImage = -860f, yPositionImage = -450f; //-860f
+    float xPositionText = 0f, yPositionText = 0f; //-860f
     float delayBetweenRecipe = 5f;
 
     bool orderIsCompleted = false;
 
     public Sprite firstImage;
 
-    Image myImageComponent;
-
-    Rigidbody2D constraint;
-    BoxCollider2D colliderScaler;
-
     List<GameObject> currentRecipe = new List<GameObject>();
+    //List<Recipe> recipes = new List<Recipe>();
+
+    public Font font;
     
     void Start()
     {
@@ -37,7 +36,7 @@ public class RecipeDisplayer : MonoBehaviour
     {
         int currentScore = PlayerPrefs.GetInt("CurrentScore1", 0);
 
-        if (orderIsCompleted == true || currentScore % 5 == 0)
+        if (orderIsCompleted == true || currentScore % 5 == 0 && currentScore!=0)
         {
             if (currentScore != this.prevScore)
             {
@@ -86,29 +85,53 @@ public class RecipeDisplayer : MonoBehaviour
         GameObject newRecipe = new GameObject(this.i.ToString());
         currentRecipe.Add(newRecipe);
 
-        //Add a Rigidbody2D to the Image Gameobject and freeze the rotation
-        newRecipe.AddComponent<Rigidbody2D>();
-        constraint = newRecipe.GetComponent<Rigidbody2D>();
-        constraint.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-        //Add a BoxCollider2D to the Image Gameobject and scale it
-        newRecipe.AddComponent<BoxCollider2D>();
-        colliderScaler = newRecipe.GetComponent<BoxCollider2D>();
-        colliderScaler.size = new Vector2(100f, 100f);
+        //Create an other GameObject to add a Text
+        GameObject text = new GameObject();
 
         //Make the GameObject child of the Canvas
         newRecipe.transform.SetParent(canvas.transform);
+        newRecipe.layer = 1;
+        text.transform.SetParent(newRecipe.transform);
+        text.layer = 2;
+
+        //Set the position of newRecipe
+        newRecipe.transform.position = new Vector2(0f, 0f);
+
+        //Add a Text to the text GameObject
+        Text testText = text.AddComponent<Text>();
+        testText.text = "TEST";
+        text.transform.localScale = new Vector2(0.125f, 0.125f);
+
+        //Set the position of the text and scale it
+        testText.transform.position = new Vector2(50f, 40f);
+
+        //Change the font size of the Text and its color
+        testText.font = font;
+        testText.fontSize = 100;
+        testText.color = Color.black;
+
+        //Change the RectTransform size to allow larger fonts and sentences
+        RectTransform myRectTransform = text.GetComponent<RectTransform>();
+        myRectTransform.sizeDelta = new Vector2(testText.fontSize * 10, 100);
+        
+        //Add a Rigidbody2D to the Image Gameobject and freeze the rotation
+        Rigidbody2D rgbd2D = newRecipe.AddComponent<Rigidbody2D>();
+        rgbd2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        //Add a BoxCollider2D to the Image Gameobject and scale it
+        BoxCollider2D collider2D = newRecipe.AddComponent<BoxCollider2D>();
+        collider2D.size = new Vector2(100f, 110f);
 
         //Add Image Component to it(This will add RectTransform as-well)
-        newRecipe.AddComponent<Image>();
+        Image myImageComponent = newRecipe.AddComponent<Image>();
 
         //Add a sprite to the Image
-        myImageComponent = newRecipe.GetComponent<Image>();
         myImageComponent.sprite = firstImage;
+        myImageComponent.transform.localScale = new Vector2(0.25f, 0.25f);
 
-        //Set the position and the scale of the Image
-        newRecipe.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPosition, yPosition);
-        newRecipe.transform.localScale = new Vector2(1.5f, 1.5f);
+        //Set the position and the scale of the Image GameObject
+        newRecipe.GetComponent<RectTransform>().anchoredPosition = new Vector2(xPositionImage, yPositionImage);
+        newRecipe.transform.localScale = new Vector2(1.5f, 1.5f);        
     }
 
     //Creates Hidden GameObject and attaches Canvas component to it
