@@ -7,7 +7,10 @@ public abstract class Item : ScriptableObject
 {
     public new string name;
     public Sprite sprite;
-    public Sprite selectedSprite;
-    
+
+    public Sprite GetSprite()
+    {
+        return sprite;
+    }
 
 }

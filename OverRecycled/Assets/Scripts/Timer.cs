@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
 
     public float timeLeft = 60.0f;
     public Text timerText;
+    private bool isGameOver;
 
     void Update()
     {
@@ -31,7 +32,12 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            GameOver();
+            if (!isGameOver)
+            {
+                GameOver();
+                isGameOver = true;
+            }
+                
         }
 
     }

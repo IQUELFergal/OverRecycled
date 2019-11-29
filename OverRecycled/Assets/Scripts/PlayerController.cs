@@ -9,21 +9,22 @@ public class PlayerController : MonoBehaviour
     public Vector2 lastMove;
     private Rigidbody2D playerRigidbody;
 
-    //Interaction décor
+    //Interaction
     public GameObject target;
-    public ItemHolder item;
+    public KeyCode interactionKey;
+    public Item item;
     public SpriteRenderer itemOverlay;
+    private bool isInteracting;
 
     //Animation
     private bool isPlayerMoving;
-    
-
 
     // Use this for initialization
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
-        if (item!=null && item.HasItem()) itemOverlay.sprite = item.GetItemSprite();
+        
+        if (item) itemOverlay.sprite = item.GetSprite();
         else itemOverlay.sprite = null;
     }
 
@@ -31,26 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
-
-        if (item)  //move item held
-        {
-            if (item.HasItem()) itemOverlay.sprite = item.GetItemSprite();
-            MoveItemHeld();
-        }
-        else itemOverlay.sprite = null;
-
-        if ((Input.GetAxisRaw("Fire1") != 0) || (Input.GetAxisRaw("Fire2") != 0))
-        {
-            if (!target) return;
-
-            Table table = target.GetComponent<Table>();
-            if (table)
-            {
-                if (Input.GetAxisRaw("Fire1") > 0.5f && table.item && !item) table.Take();
-                if (Input.GetAxisRaw("Fire2") > 0.5f && !table.item && item) table.Drop();
-                //if ((Input.GetAxisRaw("Fire1") > 0.5f || Input.GetAxisRaw("Fire2") > 0.5f) && table.item && item) table.Switch();
-            }
-        }
+        Interact();
     }
 
     void Move()
@@ -63,7 +45,8 @@ public class PlayerController : MonoBehaviour
         {
             isPlayerMoving = true;
             if (Input.GetAxisRaw("Horizontal") == 0 || Input.GetAxisRaw("Vertical") == 0) lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        }  
+        }
+        MoveItemHeld();
     }
 
     void MoveItemHeld()
@@ -76,6 +59,14 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (target != col.gameObject && target) Deselect();
+
+        target = col.gameObject;
+        Select();
+    }
+
+    private void OnTriggerStay2D(Collider2D col)
     {
         if (target != col.gameObject && target) Deselect();
 
@@ -102,5 +93,82 @@ public class PlayerController : MonoBehaviour
     {
         Table table = target.GetComponent<Table>();
         if (table) table.DeSelect();
+    }
+    
+
+    public void SetItem(Item i)
+    {
+        item = i;
+    }
+
+    public Item GetItem()
+    {
+        return item;
+    }
+
+    void Interact()
+    {
+        if (!target) return;
+
+        Table table = target.GetComponent<Table>();
+        if (table && Input.GetKeyDown(interactionKey))
+        {
+            if (table.GetItem() && !item && !isInteracting) //Take
+            {
+                Take(table);
+                StartCoroutine(UpdateInteraction());
+            }
+            if (!table.GetItem() && item && !isInteracting) //Drop
+            {
+                Drop(table);
+                StartCoroutine(UpdateInteraction());
+            }
+            if (table.GetItem() && item && !isInteracting) //Switch
+            {
+                Switch(table);
+                StartCoroutine(UpdateInteraction());
+            }
+        }
+
+        if (item) itemOverlay.sprite = item.GetSprite();
+        else itemOverlay.sprite = null;
+    }
+
+    IEnumerator UpdateInteraction()
+    {
+        isInteracting = true;
+        yield return new WaitForSeconds(0.1f);
+        isInteracting = false;
+    }
+
+    //Take an item
+    public void Take(Table table)
+    {
+        Debug.Log("Took " + table.item.name.ToString());
+        SetItem(table.GetItem());
+        table.SetItem(null);
+    }
+
+    //Drop an item
+    public void Drop(Table table)
+    {
+        Debug.Log("Dropped " + item.name.ToString());
+        table.SetItem(GetItem());
+        SetItem(null);
+        if (table.transform.GetComponentInParent(typeof(Machine)))
+        {
+            Machine machine = table.GetComponentInParent(typeof(Machine)) as Machine;
+            if(machine.IsFull())
+            { machine.Transform(machine.recipes[0]); }
+        }
+    }
+
+    //Switch two items
+    public void Switch(Table table)
+    {
+        Debug.Log("Switched " + item.name + " with " + table.item.name.ToString());
+        Item tmpItem = GetItem();
+        SetItem(table.GetItem());
+        table.SetItem(tmpItem);
     }
 }

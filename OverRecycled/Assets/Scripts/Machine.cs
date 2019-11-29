@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Machine : MonoBehaviour
 {
+    public Sprite sprite;
     public Recipe[] recipes;
     public Table[] tables;
-    public ItemHolder emptyItem;
+    //public RecipeDisplayer recipeDisplayer;
 
     
     private float timeLeft;
@@ -15,15 +16,17 @@ public class Machine : MonoBehaviour
     void Start()
     {
         Debug.Assert(recipes.Length != 0, this.ToString()+" : Machine sans recette");
+
         foreach (Recipe r in recipes)
         {
-            if (r.inputs.Length!=tables.Length) Debug.LogError(r.name + " : Recette non conforme (établi : "+this.ToString()+")");
+            if (r.inputs.Length != tables.Length) Debug.LogError(r.name + " : Recette non conforme (établi : " + this.ToString() + ")");
         }
+        
         timeLeft= recipes[0].craftingTime;
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         
         if (IsFull())
@@ -36,28 +39,29 @@ public class Machine : MonoBehaviour
         {
             //timeLeft = recipes[0].craftingTime;
         }
-    }
+    }*/
 
-    void Transform(Recipe r)
+    public void Transform(Recipe r)
     {
+        Item result = GetResult();
+        if (!result) return;
         foreach (Table table in tables)
         {
             table.item = null;
         }
-        Item result = GetResult();
-        if (result==null)
+
+        if (result != null)
         {
-            tables[0].item = emptyItem;
-            tables[0].item.item = result;
+            tables[0].item = result;
             Debug.Log("Crafted " + result.name);
         }
     }
 
-    bool IsFull()
+    public bool IsFull()
     {
         foreach (Table table in tables)
         {
-            if (!table.item) return false;
+            if (!table.GetItem()) return false;
         }
         return true;
     }
@@ -98,4 +102,13 @@ public class Machine : MonoBehaviour
         }
         return result;
     }
+
+
+    /*void CompleteRecipe(Item i)
+    {
+        foreach(GameObject recipe in recipeDisplayer.currentRecipe)
+        {
+            if(i==recipe)
+        }
+    }*/
 }

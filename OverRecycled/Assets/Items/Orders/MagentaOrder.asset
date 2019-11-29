@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81f376b8f6a1e284bb4a70acdb27469b, type: 3}
-  m_Name: Test Order
+  m_Name: MagentaOrder
   m_EditorClassIdentifier: 
-  name: TestOrder
+  name: MagentaOrder
   sprite: {fileID: 21300000, guid: 437ef244a88bc9940bf41ada3aab7675, type: 3}
   selectedSprite: {fileID: 21300000, guid: 437ef244a88bc9940bf41ada3aab7675, type: 3}
   scoreValue: 0
