@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        FindObjectOfType<Score>().score1.text = 0.ToString();
+        FindObjectOfType<ScoreTest>().score1.text = 0.ToString();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         
         FindObjectOfType<AudioManager>().Stop(PlayerPrefs.GetInt("LevelIndice", 0).ToString());
