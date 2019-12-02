@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eaa37f14bf9dd324093e1e91addc773e, type: 3}
-  m_Name: New Waste
+  m_Name: BlueWaste
   m_EditorClassIdentifier: 
   name: 
   sprite: {fileID: 0}
