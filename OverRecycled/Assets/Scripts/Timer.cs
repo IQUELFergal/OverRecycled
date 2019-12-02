@@ -25,6 +25,7 @@ public class Timer : MonoBehaviour
                 {
                     timerText.transform.localScale = new Vector3(1+Mathf.PingPong(Time.time,0.5f), 1 + Mathf.PingPong(Time.time, 0.5f), 0);
                     timerText.color = new Color(1, Mathf.PingPong(2 * Time.time, 1), Mathf.PingPong(2 * Time.time, 1));
+                    
                 }
             }
             else timerText.text = actualResult.ToString("mm:ss");
