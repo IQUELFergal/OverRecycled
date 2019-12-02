@@ -5,12 +5,21 @@ using UnityEngine;
 public class Treadmill : MonoBehaviour
 {
 
-    /*[System.Serializable]
-    public class DropCurrency
+    [System.Serializable]
+    public struct Category
     {
+        public string name;
+        public int categoryChance;
+        public DropCurrency[] items;
+    }
+
+    [System.Serializable]
+     public struct DropCurrency
+     {
+        
         public Item item;
         public int dropRarity;
-    }*/
+     }
 
     protected PlayerController player;
     public float speed;
@@ -20,23 +29,14 @@ public class Treadmill : MonoBehaviour
     public Table table;
     public Item[] itemsToSpawn;
 
-    /*public int dropChance=25;
-    public int commonItemsChance;
-    public DropCurrency[] commonItems;
-    public int uncommonItemsChance;
-    public DropCurrency[] uncommonItems;
-    public int rareItemsChance;
-    public DropCurrency[] rareItems;*/
+    public int spawnChance=20;
+    public Category[] categories;
 
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        /*commonItemsChance = (int)(dropChance * 0.6);
-        uncommonItemsChance = (int)(dropChance * 0.3);
-        rareItemsChance = (int)(dropChance * 0.1);
-        if (dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance) != 0) dropChance -= dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance);*/
         InvokeRepeating("GenerateItem", 0f, 1/speed);
     }
 
@@ -51,22 +51,51 @@ public class Treadmill : MonoBehaviour
     {
         //Créer un système de pool d'objet random a instancier
         Table slot = Instantiate(table, spawnPoint.position, Quaternion.identity, transform.Find("Slots").transform);
-        if (Random.Range(0, 5) == 0) table.item = itemsToSpawn[0];
-        else table.item = null;
-
-        /*int calc_dropChance = Random.Range(0, 101);
-        if (calc_dropChance > dropChance)
+        if (Random.Range(0, 100) < spawnChance)
         {
-            table.itemHolder = null;
-            dropChance=(int)(dropChance * 1.5f);
-            UpdateChances();
+            table.item = ChooseItem(ChooseCategory());
+            //table.item = itemsToSpawn[0];
+            spawnChance = 0;
         }
         else
         {
-            dropChance = (int)(dropChance / 1.5f);
-            UpdateChances(calc_dropChance);
-        }*/
+            table.item = null;
+            spawnChance += 20;
+        }
+    }
 
+    Category ChooseCategory()
+    {
+        int total = 0;
+        foreach(Category category in categories)
+        {
+            total += category.categoryChance;
+        }
+        int currentProba = 0;
+        foreach (Category category in categories)
+        {
+            currentProba += category.categoryChance;
+            if (Random.Range(0, total) < currentProba) return category;
+        }
+        Debug.LogError("No category found");
+        return categories[0];
+    }
+
+    Item ChooseItem(Category category)
+    {
+        int total = 0;
+        foreach (DropCurrency item in category.items)
+        {
+            total += item.dropRarity;
+        }
+        int currentProba = 0;
+        foreach (DropCurrency item in category.items)
+        {
+            currentProba += item.dropRarity;
+            if (Random.Range(0, total) < currentProba) return item.item;
+        }
+        Debug.Log("No item found");
+        return null;
     }
 
     void MoveSlots()
@@ -88,49 +117,4 @@ public class Treadmill : MonoBehaviour
         }
     }
 
-    /*void UpdateChances()
-    {
-        commonItemsChance = (int)(dropChance * 0.6);
-        uncommonItemsChance = (int)(dropChance * 0.3);
-        rareItemsChance = (int)(dropChance * 0.1);
-        if (dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance) != 0) dropChance -= dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance);
-    }
-
-    void UpdateChances(int randomNumber)
-    {
-        if (randomNumber< rareItemsChance)
-        {
-            commonItemsChance = (int)(dropChance * 0.65);
-            uncommonItemsChance = (int)(dropChance * 0.35);
-            rareItemsChance = 0;
-            if (dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance) != 0) dropChance -= dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance);
-
-        }
-        else if (randomNumber < rareItemsChance+uncommonItemsChance)
-        {
-            commonItemsChance = (int)(dropChance * 0.65);
-            uncommonItemsChance = (int)(dropChance * 0.20);
-            rareItemsChance = (int)(dropChance * 0.15);
-            if (dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance) != 0) dropChance -= dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance);
-
-        }
-        else if (randomNumber < rareItemsChance + uncommonItemsChance+ commonItemsChance)
-        {
-            commonItemsChance = (int)(dropChance * 0.5);
-            uncommonItemsChance = (int)(dropChance * 0.35);
-            rareItemsChance = (int)(dropChance * 0.15);
-            if (dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance) != 0) dropChance -= dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance);
-
-        }
-        else
-        {
-            commonItemsChance = (int)(dropChance * 0.6);
-            uncommonItemsChance = (int)(dropChance * 0.3);
-            rareItemsChance = (int)(dropChance * 0.1);
-            if (dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance) != 0) dropChance -= dropChance - (commonItemsChance + uncommonItemsChance + rareItemsChance);
-
-        }
-
-
-    }*/
 }

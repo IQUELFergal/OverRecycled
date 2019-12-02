@@ -9,4 +9,5 @@ public class Recipe : ScriptableObject
     public float craftingTime=2;
     public Item[] inputs;
     public Item output;
+    public int scoreValue=10;
 }

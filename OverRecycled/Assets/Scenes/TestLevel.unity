@@ -10163,8 +10163,19 @@ PrefabInstance:
     - target: {fileID: 4326020511911644602, guid: 24487ba9f34439a4c814e04a69a7e889,
         type: 3}
       propertyPath: isBin
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4326020511911644602, guid: 24487ba9f34439a4c814e04a69a7e889,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 321365426}
+    - target: {fileID: 4326020511911644602, guid: 24487ba9f34439a4c814e04a69a7e889,
+        type: 3}
+      propertyPath: recipe
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f5138eba6df04c4eaba1fa9bf7e8565,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24487ba9f34439a4c814e04a69a7e889, type: 3}
 --- !u!1001 &6932043713547302838

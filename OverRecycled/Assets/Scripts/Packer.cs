@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Packer : Table //Renommer en 
+public class Packer : Table 
 {
     public float timeBeforeDestruction=1.5f;
     public bool isBin;
     public Score score;
     public GameObject recipeDisplayer;
+    public Recipe recipe; //A SUPPRIMER : uniquement la pour les tests
     private float timeLeft;
 
     protected override void Start()
@@ -28,12 +29,27 @@ public class Packer : Table //Renommer en
             timeLeft -= Time.deltaTime;
             if (timeLeft <= 0)
             {
-                if (isBin) DestroyItem();
+                if (isBin)
+                {
+                    DestroyItem();
+                    score.AddScore(-recipe.scoreValue);
+
+                }
+
+                if (item == recipe.output) //Ne fait rien si l'objet ne correspond à aucune recette contenue dans recipeDisplayer
+                {
+                    score.AddScore(recipe.scoreValue);
+                    SendItem();
+                }
                 /*else
                 {
                     foreach (Recipe recipe in recipeDisplayer.GetCurrentRecipes())
                     {
-                        if (item == recipe.output) SendItem();
+                        if (item == recipe.output) 
+                        {
+                            score.AddScore(recipe.scoreValue);
+                            SendItem(recipe);
+                        }
                     }
                 }*/
             }
