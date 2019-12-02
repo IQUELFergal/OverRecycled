@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa37f14bf9dd324093e1e91addc773e, type: 3}
   m_Name: BlueWaste
   m_EditorClassIdentifier: 
-  name: 
-  sprite: {fileID: 0}
+  name: BlueWaste
+  sprite: {fileID: 21300000, guid: d2cffe42ec32adb4e99431428ca2687c, type: 3}
