@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class OrderDisplayer : ScriptableObject
 {
     public new string name;
-    public string score;
+    public string scoreValue;
 
     public Sprite[] image;
 }
