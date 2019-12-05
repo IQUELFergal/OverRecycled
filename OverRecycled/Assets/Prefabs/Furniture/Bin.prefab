@@ -69,15 +69,15 @@ SpriteRenderer:
   m_SortingLayerID: 465545771
   m_SortingLayer: 7
   m_SortingOrder: -1
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 436942e76b3e8df49a7723b18e59be94, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6110367951489223166
@@ -282,9 +282,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b309449b7cec5c84fbeb126316efb3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemHolder: {fileID: 0}
+  item: {fileID: 0}
   itemOverlay: {fileID: 6110367951489223167}
   selectionOverlay: {fileID: 3657653208646815956}
   sprite: {fileID: 21300000, guid: d2cffe42ec32adb4e99431428ca2687c, type: 3}
   selectedSprite: {fileID: 21300000, guid: 8ad1c7af60f670b45b5326bf26436d29, type: 3}
   timeBeforeDestruction: 3
+  isBin: 0
+  score: {fileID: 0}
+  recipeDisplayer: {fileID: 0}
+  recipe: {fileID: 0}
