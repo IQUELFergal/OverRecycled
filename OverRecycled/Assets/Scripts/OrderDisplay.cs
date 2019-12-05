@@ -47,8 +47,6 @@ public class OrderDisplay : MonoBehaviour
         {
             timeLeft -= Time.deltaTime;
             timerBar.fillAmount = timeLeft / maxTime;
-            if (timeLeft > maxTime / 2) timerBar.color = new Color(1 - timeLeft*0.25f/ maxTime, 1, 0, 1); //timerBar.color = Color.Lerp(Color.yellow, Color.green, timeLeft / (4*maxTime));
-            else timerBar.color = timerBar.color = new Color(1 ,0.5f-timeLeft / maxTime, 0, 1);//Color.Lerp(Color.red, Color.yellow, timeLeft*4/ maxTime);
         }
         else
         {
