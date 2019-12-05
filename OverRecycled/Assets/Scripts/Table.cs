@@ -6,13 +6,12 @@ public class Table : MonoBehaviour
 {
     protected PlayerController player;
 
-    //public ItemHolder itemHolder;
+    public Sprite sprite;
     public Item item;
     public SpriteRenderer itemOverlay;
     public SpriteRenderer selectionOverlay;
 
-    public Sprite sprite;
-    public Sprite selectedSprite;
+    
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -44,14 +43,12 @@ public class Table : MonoBehaviour
 
     public void Select()
     {
-        GetComponent<SpriteRenderer>().sortingLayerName = "SelectedFurniture";
-        GetComponent<SpriteRenderer>().sprite = selectedSprite;
+        selectionOverlay.color = new Color(1, 1, 1, 0.4f);
     }
 
     public void DeSelect()
     {
-        GetComponent<SpriteRenderer>().sortingLayerName = "Furniture";
-        GetComponent<SpriteRenderer>().sprite = sprite;
+        selectionOverlay.color = new Color(1, 1, 1, 0);
     }
 
 }

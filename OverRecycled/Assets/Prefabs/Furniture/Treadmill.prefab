@@ -292,20 +292,20 @@ MonoBehaviour:
   speed: 2.5
   spawnPoint: {fileID: 4076976643897875311}
   destructionPoint: {fileID: 1936121938994588264}
-  table: {fileID: 6478427672666066235, guid: 78088aba9c6b95e4d80ba55f822ea3b9, type: 3}
+  table: {fileID: 5419769537199046180, guid: 76c6c71febaa1394881ee03e6331094a, type: 3}
   itemsToSpawn:
   - {fileID: 11400000, guid: 8c79637c2b9c8424fbe40e9e79fd7c1e, type: 2}
-  dropChance: 20
+  spawnChance: 20
   categories:
   - name: Common items
-    items: []
     categoryChance: 60
+    items: []
   - name: Uncommon items
-    items: []
     categoryChance: 30
-  - name: Rare items
     items: []
+  - name: Rare items
     categoryChance: 10
+    items: []
 --- !u!61 &-4925094746602455918
 BoxCollider2D:
   m_ObjectHideFlags: 0
