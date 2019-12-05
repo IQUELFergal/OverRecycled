@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class ScoreTest : MonoBehaviour
 {
-    public ScoreManager[] scores;
-
     public Text score1;
     public Text score2;
     public Text highScore1;
