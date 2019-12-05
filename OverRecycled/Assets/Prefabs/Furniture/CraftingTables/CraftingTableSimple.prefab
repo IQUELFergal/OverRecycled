@@ -56,6 +56,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -65,8 +66,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 465545771
-  m_SortingLayer: 7
+  m_SortingLayerID: -1471546475
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -123,12 +124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54dcb543aa8a5e4b8b9a418f227ab62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   recipes:
   - {fileID: 11400000, guid: ec53b64f96bb89448977fe5dbce65e33, type: 2}
   tables:
   - {fileID: 8105080615174754649}
-  emptyItem: {fileID: 8923716456875641750, guid: 7bc499aa2f59cef44854dde05824ec13,
-    type: 3}
 --- !u!1 &8105080615174754630
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,6 +188,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -225,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   itemOverlay: {fileID: 8105080613422505569}
+  selectionOverlay: {fileID: 0}
   sprite: {fileID: 21300000, guid: b60a63f3b837f374da954816f90f3cce, type: 3}
   selectedSprite: {fileID: 21300000, guid: 8ad1c7af60f670b45b5326bf26436d29, type: 3}
 --- !u!61 &8105080615174754648

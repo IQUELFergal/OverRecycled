@@ -132,6 +132,19 @@ public class PlayerController : MonoBehaviour
 
         if (item) itemOverlay.sprite = item.GetSprite();
         else itemOverlay.sprite = null;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseMenu pause = FindObjectOfType<PauseMenu>();
+            if (PauseMenu.GameIsPaused || pause.optionsMenuUI.activeSelf || pause.choiceMenuUI.activeSelf)
+            {
+                pause.Resume();
+            }
+            else
+            {
+                pause.Pause();
+            }
+        }
     }
 
     IEnumerator UpdateInteraction()
