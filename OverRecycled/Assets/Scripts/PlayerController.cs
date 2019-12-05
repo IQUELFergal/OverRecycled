@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     //Animation
     private bool isPlayerMoving;
 
+    int i = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -33,6 +35,31 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Interact();
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            i++;
+        }
+        if (Input.GetKeyDown(KeyCode.U) && i == 1)
+        {
+            i++;
+        }
+        if (Input.GetKeyDown(KeyCode.C) && i == 2)
+        {
+            i++;
+        }
+        if (Input.GetKeyDown(KeyCode.H) && i == 3)
+        {
+            i++;
+        }
+        if (Input.GetKeyDown(KeyCode.E) && i == 4)
+        {
+            FindObjectOfType<AudioManager>().Play("Pet");
+        }
+        if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.B) && !Input.GetKeyDown(KeyCode.U) && !Input.GetKeyDown(KeyCode.C) && !Input.GetKeyDown(KeyCode.H) && !Input.GetKeyDown(KeyCode.E))
+        {
+            i = 0;
+        }
     }
 
     void Move()
@@ -173,7 +200,7 @@ public class PlayerController : MonoBehaviour
         {
             Machine machine = table.GetComponentInParent(typeof(Machine)) as Machine;
             if(machine.IsFull())
-            { machine.Transform(machine.recipes[0]); }
+            { machine.Transform(machine.recipes[0]);}
         }
     }
 
