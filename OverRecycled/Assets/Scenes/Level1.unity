@@ -4297,12 +4297,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6286fe2dfa6b2b84097637f68813d892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderDoublePrefab: {fileID: 1837955778571803565, guid: 9242b5517c7e7524b8c4869d5b2921a6,
+  orderDouble: {fileID: 1837955778571803565, guid: 9242b5517c7e7524b8c4869d5b2921a6,
     type: 3}
-  orderDoublePrefab2: {fileID: 1837955778571803565, guid: f14173a8957a74f4b9ce14bbcef18309,
+  orderTriple: {fileID: 2073814070533843096, guid: c34a2969f0c6d064b9ac712470162454,
     type: 3}
   canvas: {fileID: 1480787737}
-  currentRecipe: []
 --- !u!1 &1500590418
 GameObject:
   m_ObjectHideFlags: 0

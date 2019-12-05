@@ -782,14 +782,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8093157a3157d459e4871277caf69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  order: {fileID: 11400000, guid: 82c5d3bd7b126a34ea303490e74a2519, type: 2}
+  recipe: {fileID: 11400000, guid: dce08bd745ae4d24ba66d53907a272b3, type: 2}
   backgroundImage: {fileID: 1837955777759115784}
-  input1Image: {fileID: 1837955776976348615}
-  input2Image: {fileID: 1837955777547981381}
+  inputImage:
+  - {fileID: 1837955776976348615}
+  - {fileID: 1837955777547981381}
   outputImage: {fileID: 1837955777607659927}
   orderNameText: {fileID: 1837955777465896404}
   scoreValueText: {fileID: 8783189568180330590}
   timerBar: {fileID: 1837955777803405671}
+  timeLeft: 0
 --- !u!1 &9118469933532770759
 GameObject:
   m_ObjectHideFlags: 0

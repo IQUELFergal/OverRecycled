@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class RecipeDisplayerSecondVersion : MonoBehaviour
 {
-    public GameObject orderDoublePrefab;
-    public GameObject orderDoublePrefab2;
+    public GameObject orderDouble;
+    public GameObject orderTriple;
     public Canvas canvas;
 
     float delayBetweenRecipe = 5f;
@@ -15,7 +15,7 @@ public class RecipeDisplayerSecondVersion : MonoBehaviour
     int numberMaxOfRecipe = 3; 
     bool orderIsCompleted = false;
 
-    public List<GameObject> currentRecipe = new List<GameObject>();
+    List<GameObject> currentRecipe = new List<GameObject>();
     
 
     // Start is called before the first frame update
@@ -37,6 +37,15 @@ public class RecipeDisplayerSecondVersion : MonoBehaviour
             {
                 // Suppression de la recette actuelle et création d'une nouvelle            
                 this.DestroyRecipe(0);
+                prevScore = currentScore;
+            }
+        }
+        if (orderIsCompleted == true || currentScore % 2 == 0 && currentScore != 0)
+        {
+            if (currentScore != this.prevScore)
+            {
+                // Suppression de la recette actuelle et création d'une nouvelle            
+                this.DestroyRecipe(1);
                 prevScore = currentScore;
             }
         }
@@ -78,16 +87,14 @@ public class RecipeDisplayerSecondVersion : MonoBehaviour
         //remplacer par les probas d'apparition des recettes
         if (this.i % 2 == 0)
         {
-            GameObject order = Instantiate(orderDoublePrefab, new Vector2(-800, -252), Quaternion.identity) as GameObject;
+            GameObject order = Instantiate(orderDouble, new Vector2(-750, -252), Quaternion.identity) as GameObject;
             order.transform.SetParent(canvas.transform, false);
-            orderDoublePrefab.transform.SetParent(canvas.transform);
             currentRecipe.Add(order);
         }
         else
         {
-            GameObject order = Instantiate(orderDoublePrefab2, new Vector2(-800, -252), Quaternion.identity) as GameObject;
+            GameObject order = Instantiate(orderTriple, new Vector2(-750, -252), Quaternion.identity) as GameObject;
             order.transform.SetParent(canvas.transform, false);
-            orderDoublePrefab.transform.SetParent(canvas.transform);
             currentRecipe.Add(order);
         }
     }

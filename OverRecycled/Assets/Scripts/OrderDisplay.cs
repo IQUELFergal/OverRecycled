@@ -7,11 +7,10 @@ public class OrderDisplay : MonoBehaviour
 {
     float gravityValue = 800f;
         
-    public Order order;
+    public Recipe recipe;
 
     public Image backgroundImage;
-    public Image input1Image;
-    public Image input2Image;
+    public Image[] inputImage;
     public Image outputImage;
     public Text orderNameText;
     public Text scoreValueText;
@@ -23,24 +22,24 @@ public class OrderDisplay : MonoBehaviour
 
     void Start()
     {
-        orderNameText.text = order.name;
-        scoreValueText.text = order.scoreValue.ToString();
+        orderNameText.text = recipe.name;
+        scoreValueText.text = recipe.scoreValue.ToString();
 
-        //maxTime = order.orderTime;
+        for (int i = 0; i < recipe.inputs.Length; i++)
+        {
+            inputImage[i].sprite = recipe.inputs[i].GetSprite();
+        }
 
-        backgroundImage.sprite = order.background;
-        input1Image.sprite = order.input1;
-        input2Image.sprite = order.input2;
-        outputImage.sprite = order.output;
+        backgroundImage.sprite = recipe.background;
 
-        //timer
+        outputImage.sprite = recipe.output.GetSprite();
+
         timeLeft = maxTime;
 
-        //move the order to the top
         Physics2D.gravity = new Vector2(0, gravityValue);
     }
 
-    void Update() //or while not destroy
+    void Update()
     {
         RecipeDisplayerSecondVersion recipe = FindObjectOfType<RecipeDisplayerSecondVersion>();
 
@@ -51,7 +50,6 @@ public class OrderDisplay : MonoBehaviour
         }
         else
         {
-            //destroy the order
             recipe.DestroyRecipe(0);
         }
     }

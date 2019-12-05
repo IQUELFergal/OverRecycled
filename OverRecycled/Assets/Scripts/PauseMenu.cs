@@ -46,5 +46,7 @@ public class PauseMenu : MonoBehaviour
         FindObjectOfType<AudioManager>().Play(PlayerPrefs.GetInt("LevelIndice", 0).ToString());
 
         pause = false;
+
+        Time.timeScale = 1f;
     }
 }
