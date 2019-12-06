@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
         {
             Machine machine = table.GetComponentInParent(typeof(Machine)) as Machine;
             if(machine.IsFull())
-            { machine.Transform(machine.recipes[0]);}
+            { machine.Transform(machine.recipes[0]); }
         }
     }
 
