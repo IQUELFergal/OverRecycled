@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     //Déplacement
     public float moveSpeed;
-    public Vector2 lastMove;
+    public Vector2 lastMove = new Vector2(0,-1);
     private Rigidbody2D playerRigidbody;
 
     //Interaction
@@ -17,13 +17,14 @@ public class PlayerController : MonoBehaviour
     private bool isInteracting;
 
     //Animation
-    private bool isPlayerMoving;
+    private Animator anim;
 
     // Use this for initialization
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
-        
+        anim = GetComponent<Animator>();
+
         if (item) itemOverlay.sprite = item.GetSprite();
         else itemOverlay.sprite = null;
     }
@@ -33,30 +34,38 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Interact();
+        Animate();
+    }
+
+    void Animate()
+    {
+        anim.SetFloat("MoveX", lastMove.x);
+        anim.SetFloat("MoveY", lastMove.y);
+        if(item) anim.SetBool("IsHoldingItem", true);
+        else anim.SetBool("IsHoldingItem", false);
     }
 
     void Move()
     {
-        isPlayerMoving = false;
         float speedMod = 1;
         if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0) speedMod = 1 / Mathf.Sqrt(2); //coef de vitesse diagonale
             playerRigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed * speedMod, Input.GetAxisRaw("Vertical") * moveSpeed * speedMod);
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
-            isPlayerMoving = true;
             if (Input.GetAxisRaw("Horizontal") == 0 || Input.GetAxisRaw("Vertical") == 0) lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         }
-        MoveItemHeld();
+        //MoveItemHeld();
+        
     }
 
-    void MoveItemHeld()
+    /*void MoveItemHeld()
     {
         if ((isPlayerMoving) && (lastMove != new Vector2(0, -1))) itemOverlay.transform.position = transform.position + 0.75f * new Vector3(lastMove.x, lastMove.y, 0f);
         else itemOverlay.transform.position = transform.position;
 
         if ((lastMove == new Vector2(0, 1))&&(Input.GetAxisRaw("Vertical")>0.5f)) itemOverlay.sortingLayerName = "BackItem";
         else itemOverlay.sortingLayerName = "FrontItem";
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D col)
     {
