@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RecipeDisplayerSecondVersion : MonoBehaviour
+public class RecipeDisplayer : MonoBehaviour
 {
     public GameObject orderDouble;
     public GameObject orderTriple;
     public Canvas canvas;
+    public Vector2 spawnPoint = new Vector2(-675, -500);
 
     float delayBetweenRecipe = 5f;
     int i = 0;
@@ -87,13 +88,13 @@ public class RecipeDisplayerSecondVersion : MonoBehaviour
         //remplacer par les probas d'apparition des recettes
         if (this.i % 2 == 0)
         {
-            GameObject order = Instantiate(orderDouble, new Vector2(-750, -252), Quaternion.identity) as GameObject;
+            GameObject order = Instantiate(orderDouble, spawnPoint, Quaternion.identity) as GameObject;
             order.transform.SetParent(canvas.transform, false);
             currentRecipe.Add(order);
         }
         else
         {
-            GameObject order = Instantiate(orderTriple, new Vector2(-750, -252), Quaternion.identity) as GameObject;
+            GameObject order = Instantiate(orderTriple, spawnPoint, Quaternion.identity) as GameObject;
             order.transform.SetParent(canvas.transform, false);
             currentRecipe.Add(order);
         }

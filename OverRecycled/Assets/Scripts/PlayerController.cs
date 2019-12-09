@@ -55,18 +55,8 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetAxisRaw("Horizontal") == 0 || Input.GetAxisRaw("Vertical") == 0) lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         }
-        //MoveItemHeld();
         
     }
-
-    /*void MoveItemHeld()
-    {
-        if ((isPlayerMoving) && (lastMove != new Vector2(0, -1))) itemOverlay.transform.position = transform.position + 0.75f * new Vector3(lastMove.x, lastMove.y, 0f);
-        else itemOverlay.transform.position = transform.position;
-
-        if ((lastMove == new Vector2(0, 1))&&(Input.GetAxisRaw("Vertical")>0.5f)) itemOverlay.sortingLayerName = "BackItem";
-        else itemOverlay.sortingLayerName = "FrontItem";
-    }*/
 
     private void OnTriggerEnter2D(Collider2D col)
     {

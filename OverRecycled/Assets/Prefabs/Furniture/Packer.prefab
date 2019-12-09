@@ -282,12 +282,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b309449b7cec5c84fbeb126316efb3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: d2cffe42ec32adb4e99431428ca2687c, type: 3}
   item: {fileID: 0}
   itemOverlay: {fileID: 6110367951489223167}
   selectionOverlay: {fileID: 3657653208646815956}
+  sprite: {fileID: 21300000, guid: d2cffe42ec32adb4e99431428ca2687c, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 8ad1c7af60f670b45b5326bf26436d29, type: 3}
   timeBeforeDestruction: 3
-  isBin: 1
+  isBin: 0
   score: {fileID: 0}
   recipeDisplayer: {fileID: 0}
   recipe: {fileID: 0}

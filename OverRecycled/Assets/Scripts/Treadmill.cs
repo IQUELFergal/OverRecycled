@@ -23,6 +23,7 @@ public class Treadmill : MonoBehaviour
 
     protected PlayerController player;
     public float speed;
+    public GameObject arrowsGameObject;
 
     public Transform spawnPoint;
     public Transform destructionPoint;
@@ -45,9 +46,20 @@ public class Treadmill : MonoBehaviour
     {
         MoveSlots();
         DestroyAtEnd();
+        AnimateArrows();
     }
 
-    void GenerateItem()
+    void AnimateArrows()
+    {
+        Transform[] arrows = arrowsGameObject.GetComponentsInChildren<Transform>();
+        foreach (Transform arrow in arrows)
+        {
+            arrow.transform.Translate(-Time.deltaTime * speed, 0, 0);
+            if (arrow.position.x<-12) arrow.transform.position = new Vector3(0, 0, 0);
+        }
+    }
+
+        void GenerateItem()
     {
         //Créer un système de pool d'objet random a instancier
         Table slot = Instantiate(table, spawnPoint.position, Quaternion.identity, transform.Find("Slots").transform);
