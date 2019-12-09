@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 
 public class Bin : MonoBehaviour
 {
-    public float moveSpeed;
-
     public Image hitman;
+    public float moveSpeed;
     private Rigidbody2D myRigidbody;
 
     private bool moving;
@@ -36,8 +35,7 @@ public class Bin : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            i = 0;
-            i++;
+            i = 1;
         }
         if (Input.GetKeyDown(KeyCode.U) && i == 1)
         {
@@ -84,11 +82,16 @@ public class Bin : MonoBehaviour
                     moving = true;
                     timeToMoveCounter = timeToMove;
 
-                    moveDirection = new Vector2(Random.Range(-2f, 2f) * moveSpeed, Random.Range(-2f, 2f) * moveSpeed);
+                    moveDirection = new Vector2(Random.Range(-1f, 1f) * moveSpeed, Random.Range(-1f, 1f) * moveSpeed);
+                    Vector2 position = transform.position;
+                    position.x = Mathf.Clamp(transform.position.x, -1.0f, 1.0f);
+                    position.y = Mathf.Clamp(transform.position.y, -1.0f, 1.0f);
+                    transform.position = position;
                 }
             }
         }
     }
+
     public void Destroy()
     {
         FindObjectOfType<AudioManager>().Play("Pet");
