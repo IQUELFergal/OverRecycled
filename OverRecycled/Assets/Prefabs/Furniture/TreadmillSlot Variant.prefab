@@ -71,13 +71,22 @@ PrefabInstance:
         type: 3}
       propertyPath: sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 24a1db84de7f163498120fe5b5d6cd98,
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804255872470015799, guid: 484ed2af702a4974eab99f3124ba6cfc,
         type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 7720c68ba5e274e428f888a1ef354291,
+        type: 2}
     - target: {fileID: 1804255872470015796, guid: 484ed2af702a4974eab99f3124ba6cfc,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 24a1db84de7f163498120fe5b5d6cd98,
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804255872470015796, guid: 484ed2af702a4974eab99f3124ba6cfc,
         type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 484ed2af702a4974eab99f3124ba6cfc, type: 3}
