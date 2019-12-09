@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CircularBlocker : MonoBehaviour
 {
     public GameObject[] blockers;
-    int i = 0;
+    public int i = 0;
     float alternateTime = 15f;
     public Collision player;
 
@@ -28,6 +28,9 @@ public class CircularBlocker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerController indice = FindObjectOfType<PlayerController>();
+
+        bool isInZone1 = indice.isIn;
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         // FIRST DIRECTION OF ROTATION
@@ -65,7 +68,8 @@ public class CircularBlocker : MonoBehaviour
         }
 
         // SECOND DIRECTION OF ROTATION
-        if (i % 2 != 0 && moveInput.y > 0)
+ 
+        if (i % 2 != 0 && moveInput.y > 0 && isInZone1 == false)
         {
             for (int a = 0; a <= 2; a++)
             {
@@ -96,7 +100,7 @@ public class CircularBlocker : MonoBehaviour
             {
                 blockers[a].SetActive(true);
             }
-        }
+        }           
     }
 
     void Alternate()

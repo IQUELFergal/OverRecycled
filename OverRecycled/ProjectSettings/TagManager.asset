@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Treadmill
   - Item
+  - Zone1
+  - Zone2
   layers:
   - Default
   - TransparentFX
