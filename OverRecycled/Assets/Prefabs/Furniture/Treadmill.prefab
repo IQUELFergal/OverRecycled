@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
-  arrows: {fileID: 6844896827833161521}
+  arrowsGameObject: {fileID: 0}
   spawnPoint: {fileID: 4076976643897875311}
   destructionPoint: {fileID: 1936121938994588264}
   table: {fileID: 5419769537199046180, guid: 76c6c71febaa1394881ee03e6331094a, type: 3}
