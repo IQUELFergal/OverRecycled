@@ -30,16 +30,11 @@ public class MainMenu : MonoBehaviour
         //FindObjectOfType<AudioManager>().Play(i.ToString());     BEUG : LANCE LES 2 SONS EN MEME TEMPS
 
         FindObjectOfType<AudioManager>().Play(PlayerPrefs.GetInt("LevelIndice", 0).ToString());
-        FindObjectOfType<AudioManager>().Stop("Theme");
+        FindObjectOfType<AudioManager>().Stop("MainTheme");
     }
 
     void Start()
     {
-        //tests
-        PlayerPrefs.SetInt("HighScore2", 8);
-        PlayerPrefs.SetInt("HighScore3", 8);
-        PlayerPrefs.SetInt("HighScore4", 8);
-
         for (int i=0; i<=3; i++)
         {
             if (PlayerPrefs.GetInt("HighScore" + (i+1).ToString(), 0) >= 10)
@@ -56,7 +51,7 @@ public class MainMenu : MonoBehaviour
         }
 
         //audio
-        FindObjectOfType<AudioManager>().Play("Theme");
+        FindObjectOfType<AudioManager>().Play("MainTheme");
                
         highScore.text = PlayerPrefs.GetInt("HighScore1", 0).ToString();
 
@@ -68,7 +63,7 @@ public class MainMenu : MonoBehaviour
 
         playButton.onClick.AddListener(() => Play(PlayerPrefs.GetInt("LevelIndice",0)));
 
-        //muteToggle.isOn = false;
+        muteToggle.isOn = false;
     }
 
     public void SetLevelIndice(int i)
