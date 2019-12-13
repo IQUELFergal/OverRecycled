@@ -30,11 +30,12 @@ public class CircularBlocker : MonoBehaviour
     {
         PlayerController indice = FindObjectOfType<PlayerController>();
 
-        bool isInZone1 = indice.isIn;
+        bool isInZone1 = indice.isInZone1;
+        bool isInZone2 = indice.isInZone2;
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         // FIRST DIRECTION OF ROTATION
-        if (i % 2 == 0 && moveInput.y > 0)
+        if (i % 2 == 0 && moveInput.y > 0 && isInZone2 == false)
         {
             for (int a = 0; a <=2; a++)
             {
@@ -55,7 +56,7 @@ public class CircularBlocker : MonoBehaviour
             blockers[6].SetActive(false);
             blockers[7].SetActive(true);
         }
-        if (i % 2 == 0 && moveInput.y < 0)
+        if (i % 2 == 0 && moveInput.y < 0 && isInZone1 == false)
         {
             for (int a = 0; a <= 2; a++)
             {
@@ -67,8 +68,7 @@ public class CircularBlocker : MonoBehaviour
             }
         }
 
-        // SECOND DIRECTION OF ROTATION
- 
+        // SECOND DIRECTION OF ROTATION 
         if (i % 2 != 0 && moveInput.y > 0 && isInZone1 == false)
         {
             for (int a = 0; a <= 2; a++)
@@ -90,7 +90,7 @@ public class CircularBlocker : MonoBehaviour
             blockers[7].SetActive(false);
             blockers[6].SetActive(true);
         }
-        if (i % 2 != 0 && moveInput.y < 0)
+        if (i % 2 != 0 && moveInput.y < 0 && isInZone2 == false)
         {
             for (int a = 0; a <= 2; a++)
             {

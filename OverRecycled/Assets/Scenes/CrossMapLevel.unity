@@ -779,7 +779,8 @@ MonoBehaviour:
   item: {fileID: 0}
   itemOverlay: {fileID: 1986811622}
   zoneIndice: 0
-  isIn: 0
+  isInZone1: 0
+  isInZone2: 0
 --- !u!212 &139474120
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2332,7 +2333,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0034880042, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2343,7 +2344,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.0114684, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &382204820
 PrefabInstance:
@@ -10724,6 +10725,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323625898357124477, guid: 2c5be0f5808368c4999d2c975b58297c,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c5be0f5808368c4999d2c975b58297c, type: 3}
