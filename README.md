@@ -8,8 +8,6 @@ Divertissant par son dynamisme et les cartes intéressantes qui y sont proposée
 
 En espérant que vous apprécierez y jouer autant que nous avons pris de plaisir à le créer.
 
-
-
 COMMENT Y JOUER ?
 
 Afin de pouvoir y jouer correctement à partir des fichiers présents dans le GitHub, il vous faudra aupréalable acquérir la dernière version de UNITY sortie à ce jour (2019.1). Ensuite, une fois le logiciel en main et le projet téléchargé, ouvrez-le avec UNITY et réglez les "Build Settings" dans le menu "File" (CTRL+SHIFT+B). Glissez dans cet ordre-ci les scènes : Opening, MenuPrincipal et CrossMapLevel. Enfin, faites "Build&Run" dans le menu "File" (CTRL+B) et jouez !
