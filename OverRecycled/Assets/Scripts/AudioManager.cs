@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class AudioManager : MonoBehaviour
 {
@@ -123,5 +123,10 @@ public class AudioManager : MonoBehaviour
                 s.source.volume = currentVolume;
             }
         }
+    }
+
+    public void Bip()
+    {
+        Play("1");
     }
 }

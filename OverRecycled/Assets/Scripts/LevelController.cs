@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
-    public bool hasOpeningPassed = false;
-
     public Animator animator;
 
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("MainTheme");
+        //FindObjectOfType<AudioManager>().Play("MainTheme");
     }
 
     // Update is called once per frame
@@ -19,7 +17,7 @@ public class LevelController : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            FindObjectOfType<AudioManager>().Play("Bip");
+            //FindObjectOfType<AudioManager>().Play("Bip");
             FadeToMainMenu();
         }
     }

@@ -18,10 +18,16 @@ public class Score : MonoBehaviour
     {
         score += n;
         UpdateText();
+        
+        if (score > PlayerPrefs.GetInt("HighScore1", 0))
+        {
+            PlayerPrefs.SetInt("HighScore1", score);
+        }
     }
 
     void UpdateText()
     {
         scoreText.text = score.ToString();
+        PlayerPrefs.SetInt("LastestScore1", score);
     }
 }

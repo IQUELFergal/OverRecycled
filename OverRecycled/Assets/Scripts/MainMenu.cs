@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Text highScore;
+    public Text latestScore;
 
     public Button[] button;
     public GameObject[] buttonLevels;
@@ -17,6 +18,8 @@ public class MainMenu : MonoBehaviour
     public Text[] levelInGrey;
 
     public Toggle muteToggle;
+
+    int unlockCondition = 10;
 
     public void Quit()
     {
@@ -35,9 +38,13 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        for (int i=0; i<=3; i++)
+        //test
+        PlayerPrefs.SetInt("HighScore1", 30);
+        PlayerPrefs.SetInt("HighScore2", 0);
+
+        for (int i=0; i<=0; i++)
         {
-            if (PlayerPrefs.GetInt("HighScore" + (i+1).ToString(), 0) >= 10)
+            if (PlayerPrefs.GetInt("HighScore" + (i+1).ToString(), 0) >= unlockCondition)
             {
                 buttonLevels[i].SetActive(true);
                 locks[i].enabled = false;
@@ -52,8 +59,10 @@ public class MainMenu : MonoBehaviour
 
         //audio
         FindObjectOfType<AudioManager>().Play("MainTheme");
-               
-        highScore.text = PlayerPrefs.GetInt("HighScore1", 0).ToString();
+        
+
+/*        highScore.text = PlayerPrefs.GetInt("HighScore1", 0).ToString();
+        latestScore.text = PlayerPrefs.GetInt("LatestScore1", 0).ToString();*/
 
         FindObjectOfType<Settings>().GetResolution();
 
@@ -69,5 +78,7 @@ public class MainMenu : MonoBehaviour
     public void SetLevelIndice(int i)
     {
         PlayerPrefs.SetInt("LevelIndice", i);
+        highScore.text = PlayerPrefs.GetInt("HighScore"+i.ToString(), 0).ToString();
+        latestScore.text = PlayerPrefs.GetInt("LatestScore"+i.ToString(), 0).ToString();
     }
 }
