@@ -59,9 +59,9 @@ public class Treadmill : MonoBehaviour
         }
     }
 
-        void GenerateItem()
+    void GenerateItem()
     {
-        //Créer un système de pool d'objet random a instancier
+        //Créer un système de pool d'objet random à instancier
         Table slot = Instantiate(table, spawnPoint.position, Quaternion.identity, transform.Find("Slots").transform);
         if (Random.Range(0, 100) < spawnChance)
         {
