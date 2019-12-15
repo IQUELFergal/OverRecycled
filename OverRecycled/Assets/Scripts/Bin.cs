@@ -86,7 +86,7 @@ public class Bin : MonoBehaviour
                     Vector2 position = transform.position;
                     position.x = Mathf.Clamp(transform.position.x, -1.0f, 1.0f);
                     position.y = Mathf.Clamp(transform.position.y, -1.0f, 1.0f);
-                    transform.position = position;
+                    //transform.position = position;
                 }
             }
         }

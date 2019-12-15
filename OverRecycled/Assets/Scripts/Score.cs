@@ -13,7 +13,6 @@ public class Score : MonoBehaviour
         UpdateText();
     }
 
-
     public void AddScore(int n) //Ajouter un +n qui apparait et tombe en devenant transparent et le mettre rouge si n est négatif
     {
         score += n;

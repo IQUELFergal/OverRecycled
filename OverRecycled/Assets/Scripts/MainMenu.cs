@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour
 
         for (int i=0; i<=0; i++)
         {
-            if (PlayerPrefs.GetInt("HighScore" + (i+1).ToString(), 0) >= unlockCondition)
+            if (PlayerPrefs.GetInt("HighScore" + (i+1).ToString(), 0) >= unlockCondition)   
             {
                 buttonLevels[i].SetActive(true);
                 locks[i].enabled = false;

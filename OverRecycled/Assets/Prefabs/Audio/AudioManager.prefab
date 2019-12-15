@@ -63,13 +63,13 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: 1
-    clip: {fileID: 8300000, guid: 60df7ba36ec5e9b4ab3e3c5098c635ec, type: 3}
+    clip: {fileID: 8300000, guid: e8440fffb9f6c5045b31075c7b551acf, type: 3}
     volume: 0.463
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: 2
-    clip: {fileID: 8300000, guid: 69fce1e3eb24dfe47b537570cc87382a, type: 3}
+    clip: {fileID: 8300000, guid: 60df7ba36ec5e9b4ab3e3c5098c635ec, type: 3}
     volume: 0.463
     pitch: 1
     loop: 1
