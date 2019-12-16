@@ -12893,12 +12893,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6286fe2dfa6b2b84097637f68813d892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderDouble: {fileID: 1837955778571803565, guid: 9242b5517c7e7524b8c4869d5b2921a6,
-    type: 3}
-  orderTriple: {fileID: 2073814070533843096, guid: c34a2969f0c6d064b9ac712470162454,
-    type: 3}
+  orderDouble:
+  - {fileID: 1837955778571803565, guid: 9242b5517c7e7524b8c4869d5b2921a6, type: 3}
+  - {fileID: 1837955778571803565, guid: 97abd42d494581b4291783c36b5bf106, type: 3}
   canvas: {fileID: 986076258}
   spawnPoint: {x: -675, y: -500}
+  recipe:
+  - {fileID: 11400000, guid: d8aafdb2a7b511a4cac3c65b5cb2420e, type: 2}
+  - {fileID: 11400000, guid: 49cb4281a8fa1764d885aef95e6ff9f7, type: 2}
+  recipes:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &2053618813
 Transform:
   m_ObjectHideFlags: 0

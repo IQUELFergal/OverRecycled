@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class RecipeDisplayer : MonoBehaviour
 {
-    public GameObject orderDouble;
-    public GameObject orderTriple;
+    public GameObject[] orderDouble;
     public Canvas canvas;
     public Vector2 spawnPoint = new Vector2(-675, -500);
 
@@ -19,6 +18,7 @@ public class RecipeDisplayer : MonoBehaviour
     List<GameObject> currentRecipe = new List<GameObject>();
 
     public Recipe[] recipe;
+    public GameObject[] recipes;
 
 
 
@@ -91,16 +91,15 @@ public class RecipeDisplayer : MonoBehaviour
         //remplacer par les probas d'apparition des recettes
         if (i % 2 == 0)
         {
-            GameObject order = Instantiate(orderDouble, spawnPoint, Quaternion.identity) as GameObject;
+            GameObject order = Instantiate(orderDouble[0], spawnPoint, Quaternion.identity);
             order.transform.SetParent(canvas.transform, false);
             currentRecipe.Add(order);
         }
         else
         {
-            GameObject order = Instantiate(orderTriple, spawnPoint, Quaternion.identity) as GameObject;
+            GameObject order = Instantiate(orderDouble[1], spawnPoint, Quaternion.identity) as GameObject;
             order.transform.SetParent(canvas.transform, false);
             currentRecipe.Add(order);
         }
     }
-
 }

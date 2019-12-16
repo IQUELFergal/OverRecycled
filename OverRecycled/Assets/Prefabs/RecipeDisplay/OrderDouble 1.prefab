@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 8990755213133121600}
   - component: {fileID: 6799798625001253387}
   m_Layer: 5
-  m_Name: OrderDouble
+  m_Name: OrderDouble 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -782,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8093157a3157d459e4871277caf69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipe: {fileID: 11400000, guid: 49cb4281a8fa1764d885aef95e6ff9f7, type: 2}
+  recipe: {fileID: 11400000, guid: d8aafdb2a7b511a4cac3c65b5cb2420e, type: 2}
   backgroundImage: {fileID: 1837955777759115784}
   inputImage:
   - {fileID: 1837955776976348615}

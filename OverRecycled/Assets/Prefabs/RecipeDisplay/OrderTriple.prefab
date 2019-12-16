@@ -660,12 +660,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f8093157a3157d459e4871277caf69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipe: {fileID: 11400000, guid: 4a0cda0332e84eb4ebea8cf9f35907d4, type: 2}
+  recipe: {fileID: 11400000, guid: d8aafdb2a7b511a4cac3c65b5cb2420e, type: 2}
   backgroundImage: {fileID: 2073814071041893170}
   inputImage:
   - {fileID: 2073814069079430440}
   - {fileID: 2073814069544939721}
-  - {fileID: 2073814069795148292}
+  - {fileID: 2073814069544939721}
   outputImage: {fileID: 2073814069099825786}
   orderNameText: {fileID: 2073814069170139759}
   scoreValueText: {fileID: 2252942214812425089}
