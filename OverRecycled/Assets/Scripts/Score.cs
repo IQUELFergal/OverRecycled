@@ -11,13 +11,15 @@ public class Score : MonoBehaviour
     void Start()
     {
         UpdateText();
+        PlayerPrefs.SetInt("LatestScore1", score);
     }
 
     public void AddScore(int n) //Ajouter un +n qui apparait et tombe en devenant transparent et le mettre rouge si n est négatif
     {
         score += n;
         UpdateText();
-        
+        PlayerPrefs.SetInt("LatestScore1", score);
+
         if (score > PlayerPrefs.GetInt("HighScore1", 0))
         {
             PlayerPrefs.SetInt("HighScore1", score);
@@ -27,6 +29,5 @@ public class Score : MonoBehaviour
     void UpdateText()
     {
         scoreText.text = score.ToString();
-        PlayerPrefs.SetInt("LastestScore1", score);
     }
 }
