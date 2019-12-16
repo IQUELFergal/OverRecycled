@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eaa37f14bf9dd324093e1e91addc773e, type: 3}
-  m_Name: BlueWaste
+  m_Name: Jar
   m_EditorClassIdentifier: 
-  name: BlueWaste
-  sprite: {fileID: 21300000, guid: d2cffe42ec32adb4e99431428ca2687c, type: 3}
+  sprite: {fileID: -7573354855677281409, guid: cdac55a9350dde64e9a948a856c178c8, type: 3}

@@ -10,9 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 29140d56abc25ea4e89b4ada8ac59641, type: 3}
-  m_Name: CyanRawMat
+  m_Name: YellowRawMat
   m_EditorClassIdentifier: 
-  name: CyanRawMat
-  sprite: {fileID: 21300000, guid: 1c96cc40c706e8d4ea2ec83c1484806f, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 1c96cc40c706e8d4ea2ec83c1484806f, type: 3}
-  craftingId: 0
+  sprite: {fileID: 21300000, guid: 5d83e983941d231498a9c1c1032946b4, type: 3}

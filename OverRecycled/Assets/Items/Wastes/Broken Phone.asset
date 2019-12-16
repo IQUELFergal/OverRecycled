@@ -10,7 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eaa37f14bf9dd324093e1e91addc773e, type: 3}
-  m_Name: YellowWaste
+  m_Name: Broken Phone
   m_EditorClassIdentifier: 
-  name: YellowWaste
-  sprite: {fileID: 21300000, guid: 5d83e983941d231498a9c1c1032946b4, type: 3}
+  sprite: {fileID: 1801263428120863714, guid: cdac55a9350dde64e9a948a856c178c8, type: 3}

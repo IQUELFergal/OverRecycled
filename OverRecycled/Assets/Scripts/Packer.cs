@@ -9,7 +9,6 @@ public class Packer : Table
     public bool isBin;
     public Score score;
     public GameObject recipeDisplayer;
-    public Recipe recipe; //A SUPPRIMER : uniquement la pour les tests
     private float timeLeft;
 
     protected override void Start()

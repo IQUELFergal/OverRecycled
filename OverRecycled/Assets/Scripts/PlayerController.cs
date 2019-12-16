@@ -20,10 +20,6 @@ public class PlayerController : MonoBehaviour
     //Animation
     private Animator anim;
 
-    //Collision for the Circular Map (indice)
-    public int zoneIndice = 0;
-    public bool isInZone1 = false;
-    public bool isInZone2 = false;
 
     // Use this for initialization
     void Start()
@@ -77,26 +73,6 @@ public class PlayerController : MonoBehaviour
 
         target = col.gameObject;
         Select();
-
-        /////////////////////////////////////////////////////////////////////////////////
-        CircularBlocker block = FindObjectOfType<CircularBlocker>();
-
-
-        if (col.CompareTag("Zone1"))
-        {
-            //Debug.Log("DANS LA ZONE 1");
-            isInZone1 = true;
-        }
-        if (col.CompareTag("Zone2"))
-        {
-            //Debug.Log("DANS LA ZONE 2");
-            isInZone2 = true;
-        }
-        if ((!col.CompareTag("Zone1") || !col.CompareTag("Zone2")) && col.CompareTag("Untagged"))
-        {
-            //Debug.Log("HORS ZONE");
-            isInZone1 = false;
-            isInZone2 = false;}
     }
 
     private void OnTriggerExit2D(Collider2D col)
