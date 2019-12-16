@@ -18,7 +18,7 @@ public class RecipeDisplayer : MonoBehaviour
 
     List<GameObject> currentRecipe = new List<GameObject>();
 
-    public List<Recipe> recipe = new List<Recipe>();
+    public Recipe[] recipe;
 
 
 
@@ -85,11 +85,11 @@ public class RecipeDisplayer : MonoBehaviour
     void Create()
     {
         //Number of recipe
-        this.i++;
+        i++;
         PlayerPrefs.SetInt("RecipeNumber", this.i);
 
         //remplacer par les probas d'apparition des recettes
-        if (this.i % 2 == 0)
+        if (i % 2 == 0)
         {
             GameObject order = Instantiate(orderDouble, spawnPoint, Quaternion.identity) as GameObject;
             order.transform.SetParent(canvas.transform, false);
