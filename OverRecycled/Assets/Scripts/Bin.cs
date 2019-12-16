@@ -51,7 +51,6 @@ public class Bin : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && i == 4)
         {
-            //FindObjectOfType<AudioManager>().Play("Pet");
             hitman.enabled = true;
         }
         if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.B) && !Input.GetKeyDown(KeyCode.U) && !Input.GetKeyDown(KeyCode.C) && !Input.GetKeyDown(KeyCode.H) && !Input.GetKeyDown(KeyCode.E))
@@ -94,7 +93,6 @@ public class Bin : MonoBehaviour
 
     public void Destroy()
     {
-        //FindObjectOfType<AudioManager>().Play("Pet");
         Destroy(hitman);
         FindObjectOfType<Score>().AddScore(100);
     }

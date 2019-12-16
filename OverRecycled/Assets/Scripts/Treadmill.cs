@@ -23,12 +23,14 @@ public class Treadmill : MonoBehaviour
 
     protected PlayerController player;
     public float speed;
-    public GameObject arrowsGameObject;
+    public ParticleSystem effect;
 
     public Transform spawnPoint;
     public Transform destructionPoint;
     public Table table;
     public Item[] itemsToSpawn;
+
+    
 
     public int spawnChance=20;
     public Category[] categories;
@@ -37,6 +39,8 @@ public class Treadmill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Animator anim = GetComponent<Animator>();
+        anim.SetFloat("Speed", speed);
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         InvokeRepeating("GenerateItem", 0f, 1/speed);
     }
@@ -46,17 +50,6 @@ public class Treadmill : MonoBehaviour
     {
         MoveSlots();
         DestroyAtEnd();
-        AnimateArrows();
-    }
-
-    void AnimateArrows()
-    {
-        Transform[] arrows = arrowsGameObject.GetComponentsInChildren<Transform>();
-        foreach (Transform arrow in arrows)
-        {
-            arrow.transform.Translate(-Time.deltaTime * speed, 0, 0);
-            if (arrow.position.x<-12) arrow.transform.position = new Vector3(0, 0, 0);
-        }
     }
 
     void GenerateItem()
@@ -66,7 +59,6 @@ public class Treadmill : MonoBehaviour
         if (Random.Range(0, 100) < spawnChance)
         {
             table.item = ChooseItem(ChooseCategory());
-            //table.item = itemsToSpawn[0];
             spawnChance = 0;
         }
         else
@@ -124,7 +116,8 @@ public class Treadmill : MonoBehaviour
         {
             if (slot.transform.position.x< destructionPoint.transform.position.x)
             {
-               Destroy(slot.gameObject);
+                if (slot.gameObject.GetComponent<Table>().item) effect.Play();
+                Destroy(slot.gameObject);
             }
         }
     }

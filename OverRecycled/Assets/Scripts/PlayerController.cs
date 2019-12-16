@@ -160,7 +160,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //FindObjectOfType<AudioManager>().Play("Pet");
             PauseMenu pause = FindObjectOfType<PauseMenu>();
             if (PauseMenu.GameIsPaused || pause.optionsMenuUI.activeSelf || pause.choiceMenuUI.activeSelf)
             {
