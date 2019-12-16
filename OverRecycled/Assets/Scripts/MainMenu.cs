@@ -39,10 +39,9 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         //test
-        PlayerPrefs.SetInt("HighScore1", 30);
-        PlayerPrefs.SetInt("HighScore2", 0);
+        //PlayerPrefs.SetInt("HighScore1", 0);
 
-        for (int i=0; i<=0; i++)
+        for (int i=0; i<=3; i++)
         {
             if (PlayerPrefs.GetInt("HighScore" + (i+1).ToString(), 0) >= unlockCondition)   
             {
@@ -59,14 +58,9 @@ public class MainMenu : MonoBehaviour
 
         //audio
         FindObjectOfType<AudioManager>().Play("MainTheme");
-        
-
-/*        highScore.text = PlayerPrefs.GetInt("HighScore1", 0).ToString();
-        latestScore.text = PlayerPrefs.GetInt("LatestScore1", 0).ToString();*/
 
         FindObjectOfType<Settings>().GetResolution();
-
-        
+                
         button[0].onClick.AddListener(() => SetLevelIndice(1));   
         button[1].onClick.AddListener(() => SetLevelIndice(2));
 

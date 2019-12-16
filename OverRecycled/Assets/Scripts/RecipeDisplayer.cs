@@ -13,11 +13,14 @@ public class RecipeDisplayer : MonoBehaviour
     float delayBetweenRecipe = 5f;
     int i = 0;
     int prevScore = -1;
-    int numberMaxOfRecipe = 3; 
+    int numberMaxOfRecipe = 3;
     bool orderIsCompleted = false;
 
     List<GameObject> currentRecipe = new List<GameObject>();
-    
+
+    List<Recipe> recipe = new List<Recipe>();
+
+
 
     // Start is called before the first frame update
     void Start()
