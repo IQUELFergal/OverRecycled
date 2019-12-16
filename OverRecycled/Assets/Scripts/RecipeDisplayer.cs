@@ -18,7 +18,7 @@ public class RecipeDisplayer : MonoBehaviour
 
     List<GameObject> currentRecipe = new List<GameObject>();
 
-    List<Recipe> recipe = new List<Recipe>();
+    public List<Recipe> recipe = new List<Recipe>();
 
 
 

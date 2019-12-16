@@ -8,7 +8,7 @@ public class Packer : Table
     public float timeBeforeDestruction=1.5f;
     public bool isBin;
     public Score score;
-    public GameObject recipeDisplayer;
+    public RecipeDisplayer recipeDisplayer;
     private float timeLeft;
 
     protected override void Start()
@@ -31,26 +31,18 @@ public class Packer : Table
                 if (isBin)
                 {
                     DestroyItem();
-                    score.AddScore(-recipe.scoreValue);
-
                 }
-
-                if (item == recipe.output) //Ne fait rien si l'objet ne correspond à aucune recette contenue dans recipeDisplayer
+                
                 {
-                    score.AddScore(recipe.scoreValue);
-                    SendItem();
-                }
-                /*else
-                {
-                    foreach (Recipe recipe in recipeDisplayer.GetCurrentRecipes())
+                    foreach (Recipe recipe in recipeDisplayer.recipe)
                     {
                         if (item == recipe.output) 
                         {
                             score.AddScore(recipe.scoreValue);
-                            SendItem(recipe);
+                            DestroyItem();
                         }
                     }
-                }*/
+                }
             }
         }
         else
@@ -69,12 +61,4 @@ public class Packer : Table
         }
     }
 
-    public void SendItem()
-    {
-        if (item)
-        {
-            Debug.Log("Sent " + item.name);
-            SetItem(null);
-        }
-    }
 }
