@@ -27,7 +27,8 @@ public class Table : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (item) itemOverlay.sprite = item.GetSprite();
+        if (item) { itemOverlay.sprite = item.GetSprite(); Debug.Log("test affichage"); }
+
         else itemOverlay.sprite = null;
     }
 

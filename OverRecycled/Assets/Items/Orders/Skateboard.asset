@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81f376b8f6a1e284bb4a70acdb27469b, type: 3}
   m_Name: Skateboard
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: -4261047623482395726, guid: cdac55a9350dde64e9a948a856c178c8, type: 3}
   scoreValue: 100
